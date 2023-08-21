@@ -19,7 +19,7 @@ body {
     font-size: 24px;
     pointer-events: none;
     transform-origin: center center;
-    animation: floatAnimation linear infinite;
+    animation: floatAnimation linear infinite, confettiAnimation linear infinite;
 }
 
 @keyframes floatAnimation {
@@ -31,5 +31,14 @@ body {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+@keyframes confettiAnimation {
+    0% {
+        transform: rotateZ(0) translate(0, 0);
+    }
+    100% {
+        transform: rotateZ(360deg) translate(100vw, 100vh);
     }
 }
