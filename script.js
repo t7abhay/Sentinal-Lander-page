@@ -1,15 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let applicationCount = 0;
-    const countLabel = document.getElementById('count');
-    const incrementButton = document.getElementById('incrementButton');
-    const emojiLabel = document.getElementById('emoji');
+    const emojiCount = 50;
+    const emojis = ['🎉', '😄', '🚀', '🌟', '❤️', '😊', '🎈', '🐱', '🍕', '🚲', '🍦', '🌺', '🌞', '🍓', '🎵', '🍭', '🍂', '🎓', '🏄‍♂️', '🎁', '🌍', '🐶', '🏆', '🍔', '🍀', '🎮', '🌹', '⚡️', '🍒', '📚', '🌄', '🚢', '🐰', '🎤', '🚁', '🍎', '🐢', '🎃', '🍒', '🌼', '🎊', '🌴', '🍁', '🍌', '🍂', '🌈', '🏀'];
 
-    incrementButton.addEventListener('click', function() {
-        applicationCount++;
-        countLabel.textContent = `Applications Applied: ${applicationCount}`;
-        emojiLabel.classList.remove('hidden');
-        setTimeout(function() {
-            emojiLabel.classList.add('hidden');
-        }, 3000);
-    });
+    const emojisContainer = document.querySelector('.emojis-container');
+
+    for (let i = 0; i < emojiCount; i++) {
+        const emoji = document.createElement('span');
+        emoji.classList.add('emoji');
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = `${Math.random() * 100}vw`;
+        emoji.style.animationDuration = `${Math.random() * 4 + 2}s`;
+        emoji.style.animationDelay = `${Math.random() * 2}s`;
+        emojisContainer.appendChild(emoji);
+    }
 });
