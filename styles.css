@@ -4,55 +4,12 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
-.background {
+.emojis-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #3498db, #2c3e50);
-    animation: bgAnimation 20s linear infinite;
-}
-
-@keyframes bgAnimation {
-    0%, 100% {
-        background: linear-gradient(to bottom, #3498db, #2c3e50);
-    }
-    50% {
-        background: linear-gradient(to bottom, #2c3e50, #3498db);
-    }
-}
-
-.emojis {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
     pointer-events: none;
-}
-
-.emoji {
-    font-size: 24px;
-    animation: floatAnimation 6s linear infinite;
-    opacity: 0.7;
-    pointer-events: none;
-    animation-delay: calc(var(--delay) * 1s);
-}
-
-@keyframes floatAnimation {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    z-index: -1;
 }
