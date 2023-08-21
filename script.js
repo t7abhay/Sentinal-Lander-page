@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const emojiCount = 50;
-    let emojis = ['🎉', '😄', '🚀', '🌟', '❤️', '😊', '🎈', '🐱', '🍕', '🚲', '🍦', '🌺', '🌞', '🍓', '🎵', '🍭', '🍂', '🎓', '🏄‍♂️', '🎁', '🌍', '🐶', '🏆', '🍔', '🍀', '🎮', '🌹', '⚡️', '🍒', '📚', '🌄', '🚢', '🐰', '🎤', '🚁', '🍎', '🐢', '🎃', '🍒', '🌼', '🎊', '🌴', '🍁', '🍌', '🍂', '🌈', '🏀'];
+    const emojis = ['🎉', '😄', '🚀', '🌟', '❤️', '😊', '🎈', '🐱', '🍕', '🚲', '🍦', '🌺', '🌞', '🍓', '🎵', '🍭', '🍂', '🎓', '🏄‍♂️', '🎁', '🌍', '🐶', '🏆', '🍔', '🍀', '🎮', '🌹', '⚡️', '🍒', '📚', '🌄', '🚢', '🐰', '🎤', '🚁', '🍎', '🐢', '🎃', '🍒', '🌼', '🎊', '🌴', '🍁', '🍌', '🍂', '🌈', '🏀'];
 
     const emojisContainer = document.querySelector('.emojis-container');
+    const distanceThreshold = 150;
 
     for (let i = 0; i < emojiCount; i++) {
         const emoji = document.createElement('span');
@@ -13,20 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
         emojisContainer.appendChild(emoji);
     }
 
-    window.addEventListener('mousemove', function(event) {
+    emojisContainer.addEventListener('mousemove', function(event) {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
-        emojis = emojis.map(emoji => {
+        emojis.forEach((emoji, index) => {
             const distance = Math.sqrt(
                 Math.pow(mouseX - emojisContainer.offsetWidth / 2, 2) +
                 Math.pow(mouseY - emojisContainer.offsetHeight / 2, 2)
             );
 
-            if (distance < 150) {
-                return '🌊'; // Change to wave emoji when cursor is near
+            if (distance < distanceThreshold) {
+                emojis[index] = '🌊'; // Change to wave emoji when cursor is near
             } else {
-                return emoji;
+                emojis[index] = '🎉'; // Change back to original emoji
             }
         });
 
@@ -34,9 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateEmojis() {
-        const emojiElements = emojisContainer.querySelectorAll('.emoji');
-        emojiElements.forEach((emojiElement, index) => {
-            emojiElement.textContent = emojis[index];
-        });
+        emojisContainer.innerHTML = emojis.map(emoji => `<span class="emoji">${emoji}</span>`).join('');
     }
 });
