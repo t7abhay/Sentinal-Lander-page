@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         emojisContainer.appendChild(emoji);
     }
 
-    emojisContainer.addEventListener('mousemove', function(event) {
+    window.addEventListener('mousemove', function(event) {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
