@@ -12,22 +12,23 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: -1;
+    transform-style: preserve-3d;
+    perspective: 100px;
 }
 
 .emoji {
     position: absolute;
     font-size: 24px;
+    pointer-events: none;
+    transform-origin: center center;
     animation: floatAnimation linear infinite;
 }
 
 @keyframes floatAnimation {
-    0% {
-        transform: translate(0, 0);
+    0%, 100% {
+        transform: translate(0, 0) rotateX(0);
     }
     50% {
-        transform: translate(50vw, 50vh);
-    }
-    100% {
-        transform: translate(0, 0);
+        transform: translate(0, -50vh) rotateX(45deg);
     }
 }
