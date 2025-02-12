@@ -1,0 +1,26 @@
+.admin {
+  text-align: center;
+  padding: 30px;
+}
+
+.admin h1 {
+  color: #e74c3c;
+}
+
+.admin-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-table th {
+  background: #333;
+  color: white;
+}
